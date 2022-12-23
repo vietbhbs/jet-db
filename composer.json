@@ -1,0 +1,17 @@
+{
+  "name": "viettqt/jet-query-builder",
+  "description": "Query builder communicate database",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Viettqt\\JetQueryBuilder\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Viet Bui",
+      "email": "vietbh@beetsoft.com.vn"
+    }
+  ],
+  "require": {}
+}
