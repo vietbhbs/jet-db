@@ -1,7 +1,9 @@
 <?php
+
 namespace Viettqt\JetQueryBuilder;
 
-class DB{
+class DB extends Builder
+{
     protected static array $CONFIG_LIST = [];
     protected static string $USE_DATABASE = 'main';
     protected static bool $CHANGE_ONCE = false;
