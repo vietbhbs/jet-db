@@ -1,6 +1,6 @@
 <?php
 
-namespace Viettqt\JetQueryBuilder;
+namespace Viettqt\JetDB;
 
 use Exception;
 
@@ -38,7 +38,7 @@ class Config extends DB
     private string $CHARSET = 'utf8mb4';
     private string $COLLATION = '';
 
-    private $PDO = false;
+    private bool|object $PDO = false;
 
     public function __construct(array $params = [])
     {
@@ -147,7 +147,7 @@ class Config extends DB
     /**
      * @throws Exception
      */
-    public function pdo()
+    public function pdo(): object|bool
     {
         if (!$this->PDO) {
             throw new Exception("The database settings were not made correctly and the connection was not established\n Please check 'https://github.com/webrium/foxql' Documents.");

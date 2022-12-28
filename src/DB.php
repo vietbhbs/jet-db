@@ -1,6 +1,6 @@
 <?php
 
-namespace Viettqt\JetQueryBuilder;
+namespace Viettqt\JetDB;
 
 class DB extends Builder
 {
@@ -18,7 +18,7 @@ class DB extends Builder
         return self::$CONFIG_LIST[self::$USE_DATABASE];
     }
 
-    public static function table($name)
+    public static function table($name): object
     {
         $config = self::getCurrentConfig();
         $builder = new Builder($config);
@@ -67,10 +67,10 @@ class DB extends Builder
     }
 
 
-//    public static function raw($query, array $values = []): Raw
-//    {
-//        $raw = new Raw;
-//        $raw->setRawData($query, $values);
-//        return $raw;
-//    }
+    public static function raw($query, array $values = []): Raw
+    {
+        $raw = new Raw;
+        $raw->setRawData($query, $values);
+        return $raw;
+    }
 }

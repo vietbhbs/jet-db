@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Viettqt\JetQueryBuilder\DB;
-use Viettqt\JetQueryBuilder\Config;
+use Viettqt\JetDB\DB;
+use Viettqt\JetDB\Config;
 
 DB::addConnection('main', [
     'host' => 'localhost',

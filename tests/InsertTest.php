@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-use Viettqt\JetQueryBuilder\DB;
+use Viettqt\JetDB\DB;
 
 $now = date('Y-m-d H:i:s');
 

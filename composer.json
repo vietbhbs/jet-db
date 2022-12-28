@@ -1,10 +1,10 @@
 {
-  "name": "viettqt/jet-query-builder",
+  "name": "viettqt/jet-db",
   "description": "Query builder communicate database",
   "type": "library",
   "autoload": {
     "psr-4": {
-      "Viettqt\\JetQueryBuilder\\": "src/"
+      "Viettqt\\JetDB\\": "src/"
     }
   },
   "authors": [

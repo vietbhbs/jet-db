@@ -1,6 +1,6 @@
 <?php
 
-namespace Viettqt\JetQueryBuilder;
+namespace Viettqt\JetDB;
 
 use PDO;
 use stdClass;
@@ -82,7 +82,7 @@ class Builder
         return $result;
     }
 
-    public function setTimestamps(array &$values, $just_update = false)
+    public function setTimestamps(array &$values, $just_update = false): void
     {
         if ($this->TIMESTAMPS) {
             $now = date('Y-m-d H:i:s');

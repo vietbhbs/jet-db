@@ -1,11 +1,11 @@
 <?php
 
-namespace Viettqt\JetQueryBuilder;
+namespace Viettqt\JetDB;
 
 trait Process
 {
 
-    private $param_index = 0;
+    private int $param_index = 0;
     protected $TABLE;
 
     protected function method_in_maker(array $list, $callback)
@@ -16,7 +16,7 @@ trait Process
         }
     }
 
-    protected function add_to_param($name, $value)
+    protected function add_to_param($name, $value): string
     {
 
         if ($value === false) {
@@ -29,20 +29,20 @@ trait Process
         return ":$name";
     }
 
-    protected function add_to_param_auto_name($value)
+    protected function add_to_param_auto_name($value): string
     {
         $name = $this->get_new_param_name();
         return $this->add_to_param($name, $value);
     }
 
-    protected function get_new_param_name()
+    protected function get_new_param_name(): string
     {
         $this->param_index++;
         return 'p' . $this->param_index;
     }
 
 
-    protected function fix_column_name($name)
+    protected function fix_column_name($name): array
     {
         $array = explode('.', $name);
         $count = count($array);
@@ -70,7 +70,7 @@ trait Process
         return ['name' => "$table.$column", 'table' => $table, 'column' => $column, 'type' => $type];
     }
 
-    protected function fix_operator_and_value(&$operator, &$value)
+    protected function fix_operator_and_value(&$operator, &$value): void
     {
         if ($value == false || $value == null) {
             $value = $operator;
@@ -108,17 +108,17 @@ trait Process
     }
 
 
-    public function get_params()
+    public function get_params(): array
     {
         return $this->PARAMS;
     }
 
-    public function get_source_value()
+    public function get_source_value(): array
     {
         return $this->SOURCE_VALUE;
     }
 
-    protected function sql_stractur($key = null)
+    protected function sql_stractur($key = null): array|int
     {
         $arr = [
             'SELECT' => 1,
