@@ -1,7 +1,9 @@
 <?php
-namespace Viettqt\JetQueryBuilder;
 
-class DB{
+namespace Viettqt\JetDB;
+
+class DB extends Builder
+{
     protected static array $CONFIG_LIST = [];
     protected static string $USE_DATABASE = 'main';
     protected static bool $CHANGE_ONCE = false;
@@ -16,7 +18,7 @@ class DB{
         return self::$CONFIG_LIST[self::$USE_DATABASE];
     }
 
-    public static function table($name)
+    public static function table($name): object
     {
         $config = self::getCurrentConfig();
         $builder = new Builder($config);
@@ -65,10 +67,10 @@ class DB{
     }
 
 
-//    public static function raw($query, array $values = []): Raw
-//    {
-//        $raw = new Raw;
-//        $raw->setRawData($query, $values);
-//        return $raw;
-//    }
+    public static function raw($query, array $values = []): Raw
+    {
+        $raw = new Raw;
+        $raw->setRawData($query, $values);
+        return $raw;
+    }
 }

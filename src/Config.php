@@ -1,6 +1,6 @@
 <?php
 
-namespace Viettqt\JetQueryBuilder;
+namespace Viettqt\JetDB;
 
 use Exception;
 
@@ -38,7 +38,7 @@ class Config extends DB
     private string $CHARSET = 'utf8mb4';
     private string $COLLATION = '';
 
-    private bool $PDO = false;
+    private bool|object $PDO = false;
 
     public function __construct(array $params = [])
     {
@@ -111,9 +111,9 @@ class Config extends DB
             $dsn .= ":$this->SERVER_PORT";
         }
 
-        $dsn.= ';';
+        $dsn .= ';';
 
-        $dsn.= "dbname=$this->DATABASE_NAME;";
+        $dsn .= "dbname=$this->DATABASE_NAME;";
 
         // add charset
         $dsn .= "charset=$this->CHARSET;";
@@ -123,15 +123,14 @@ class Config extends DB
 
     public function connect(): void
     {
-        if(! $this->IS_CONNECT){
+        if (!$this->IS_CONNECT) {
             $dsn = $this->makeConnectionString();
 
             $this->PDO = new \PDO($dsn, $this->USERNAME, $this->PASSWORD, [
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING,
                 \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES '$this->CHARSET' COLLATE '$this->COLLATION'"
             ]);
-
-            if(DB::$CHANGE_ONCE){
+            if (DB::$CHANGE_ONCE) {
                 DB::$CHANGE_ONCE = false;
                 DB::$USE_DATABASE = 'main';
             }
@@ -148,9 +147,9 @@ class Config extends DB
     /**
      * @throws Exception
      */
-    public function pdo(): bool
+    public function pdo(): object|bool
     {
-        if (!$this->PDO){
+        if (!$this->PDO) {
             throw new Exception("The database settings were not made correctly and the connection was not established\n Please check 'https://github.com/webrium/foxql' Documents.");
         }
 
